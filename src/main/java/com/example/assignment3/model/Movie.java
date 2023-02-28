@@ -8,10 +8,10 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "movie-title")
+    @Column(name = "movie_title")
     private String movieName;
     private String genre;
-    @Column(name = "release-year")
+    @Column(name = "release_year")
     private int releaseYear;
     private String director;
     private String picture;
@@ -19,5 +19,10 @@ public class Movie {
     @ManyToOne
     private Franchise franchise;
     @ManyToMany
+    @JoinTable(
+            name = "movie_character",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "character_id")}
+    )
     private Set<Character> characters;
 }
