@@ -1,9 +1,12 @@
 package com.example.assignment3.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
-
+@Getter
+@Setter
 @Entity
 public class Franchise {
     @Id
@@ -12,4 +15,6 @@ public class Franchise {
     private String name;
     @OneToMany(mappedBy = "franchise")
     private Set<Movie> movies;
+
+
 }
