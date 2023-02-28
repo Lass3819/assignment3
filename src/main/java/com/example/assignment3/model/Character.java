@@ -12,11 +12,11 @@ public class Character {
     private String name;
     private String alias;
     private String gender;
-    @Column(name = "picture-url")
+    @Column(name = "picture_url")
     private String pictureUrl;
 
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies;
 
 
