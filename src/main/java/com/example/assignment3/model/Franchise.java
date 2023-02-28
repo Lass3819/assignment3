@@ -5,21 +5,11 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Character {
+public class Franchise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String alias;
-    private String gender;
-    @Column(name = "picture-url")
-    private String pictureUrl;
-
-
-    @ManyToMany
+    @OneToMany
     private Set<Movie> movies;
-
-
-
-
 }
