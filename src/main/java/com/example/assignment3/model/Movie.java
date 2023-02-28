@@ -1,8 +1,12 @@
 package com.example.assignment3.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
+@Getter
+@Setter
 @Entity
 public class Movie {
     @Id
@@ -25,4 +29,19 @@ public class Movie {
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
     private Set<Character> characters;
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", movieName='" + movieName + '\'' +
+                ", genre='" + genre + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", director='" + director + '\'' +
+                ", picture='" + picture + '\'' +
+                ", trailer='" + trailer + '\'' +
+                ", franchise=" + franchise +
+                ", characters=" + characters +
+                '}';
+    }
 }

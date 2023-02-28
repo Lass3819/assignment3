@@ -1,9 +1,13 @@
 package com.example.assignment3.model;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
-
+@Getter
+@Setter
 @Entity
 public class Character {
     @Id
@@ -18,6 +22,7 @@ public class Character {
 
     @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies;
+
 
 
 
