@@ -1,5 +1,7 @@
 package com.example.assignment3.model;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,12 +25,14 @@ public class Movie {
     @ManyToOne
     private Franchise franchise;
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "movie_character",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "character_id")}
     )
     private Set<Character> characters;
+
 
     @Override
     public String toString() {
@@ -44,4 +48,5 @@ public class Movie {
                 ", characters=" + characters +
                 '}';
     }
+
 }

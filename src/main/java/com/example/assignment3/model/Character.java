@@ -1,6 +1,7 @@
 package com.example.assignment3.model;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,8 +24,15 @@ public class Character {
     @ManyToMany(mappedBy = "characters")
     private Set<Movie> movies;
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", alias='" + alias + '\'' +
+                ", gender='" + gender + '\'' +
+                ", pictureUrl='" + pictureUrl + '\'' +
+                ", movies=" + movies +
+                '}';
+    }
 }

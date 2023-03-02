@@ -21,7 +21,10 @@ public class AppRunner implements ApplicationRunner {
     @Override
     @Transactional
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println(franchiseService.findById(1).getName());
+        /*System.out.println(franchiseService.findById(1).getName());
+        franchiseService.deleteById(1);
+        movieService.deleteById(2);*/
+
     }
 
 }
