@@ -5,6 +5,7 @@ import com.example.assignment3.repositories.CharacterRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Service
 public class CharacterServiceImpl implements CharacterService{
@@ -36,7 +37,14 @@ public class CharacterServiceImpl implements CharacterService{
 
     @Override
     public void deleteById(Integer id) {
-        characterRepository.deleteById(id);
+        Character character = findById(id);
+        character.getMovies().forEach(s ->{
+            Set tempSet = s.getCharacters();
+            tempSet.remove(character);
+            s.setCharacters(tempSet);
+                }
+        );
+        characterRepository.delete(character);
 
     }
 }

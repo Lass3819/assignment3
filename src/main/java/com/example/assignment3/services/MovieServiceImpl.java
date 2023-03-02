@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.Collection;
+import java.util.Set;
+
 @Service
 public class MovieServiceImpl implements MovieService{
     private final MovieRepository movieRepository;
@@ -37,7 +39,13 @@ public class MovieServiceImpl implements MovieService{
 
     @Override
     public void deleteById(Integer id) {
-        movieRepository.deleteById(id);
+        Movie movie = findById(id);
+        movie.getCharacters().forEach(s -> {
+            Set tempSet = s.getMovies();
+            tempSet.remove(movie);
+            s.setMovies(tempSet);
+        });
+        movieRepository.delete(movie);
 
     }
 }
