@@ -1,12 +1,16 @@
 package com.example.assignment3.model;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 @Entity
@@ -35,4 +39,5 @@ public class Character {
                 ", movies=" + movies +
                 '}';
     }
+
 }
